@@ -34,46 +34,48 @@ You can run the application in several ways:
 go run main.go \
   -lexicon input_files/words.txt \
   -urls input_files/endg-urls.txt \
-  -workers 10 \
-  -rate 10 \
+  -workers 20 \
+  -rate 50 \
   -top 10 \
   -stats
 ```
 ### Run using the compiled binary
 ```bash
-make build   # builds ./word_counter
+make build
 ./word_counter \
--urls=input_files/endg-urls.txt \
--workers=20 \
--rate=50 \
--top=10 \
--stats
+    -lexicon input_files/words.txt \
+    -urls input_files/endg-urls.txt \
+    -workers=20 \
+    -rate=50 \
+    -top=10 \
+    -stats
 ```
 
 ### Run inside Docker
 ```bash
 docker build -t word_counter .
-docker run --rm -it word_counter \
--urls=input_files/endg-urls.txt \
--workers=20 \
--rate=50 \
--top=10 \
--stats
+    docker run --rm -it word_counter \
+    -lexicon input_files/words.txt \
+    -urls input_files/endg-urls.txt \
+    -workers=20 \
+    -rate=50 \
+    -top=10 \
+    -stats
 ```
 
 
 ## ⚙️ Command-line Flags
 
-You can see the available flags with `--help`:
+You can check the available flags with `--help`:
 
-| Flag          | Default                       | Description                             |
-|---------------|-------------------------------|-----------------------------------------|
+| Flag          | Default                       | Description                            |
+|---------------|-------------------------------|----------------------------------------|
 | `-lexicon`    | `input_files/words.txt`       | Path to the lexicon file               |
 | `-urls`       | `input_files/endg-urls.txt` | Path to the URLs file                  |
 | `-workers`    | `10`                          | Number of concurrent workers           |
 | `-rate`       | `10`                          | Requests per second (rate limit)       |
 | `-top`        | `10`                          | Number of top words to output          |
-| `-stats`      | `false`                       | Show extended statistics if set        |
+| `-stats`      | `false`                       | Show extended output statistics if set |
 
 ## 📊 Example Output
 ### Without -stats
